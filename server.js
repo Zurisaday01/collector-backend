@@ -28,8 +28,7 @@ const app = express();
 
 // Implement CORS
 app.use(cors({
-	origin: 'https://collector-backend.onrender.com/',
-	optionsSuccessStatus: 200,
+	origin: true,
 	credentials: true,
 }));
 
@@ -42,6 +41,7 @@ app.use(function (req, res, next) {
 		'Access-Control-Allow-Methods',
 		'GET,PUT,POST,DELETE,UPDATE,OPTIONS'
 	);
+	res.header("Access-Control-Allow-Origin", "*");
 	res.header('Content-Type', 'application/json;charset=UTF-8');
 	res.header('Access-Control-Allow-Credentials', true);
 	res.header(
