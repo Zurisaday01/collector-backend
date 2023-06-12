@@ -33,6 +33,10 @@ app.use(cors({
 }));
 
 
+app.get('/', (req, res) => {
+	res.send('API is running....');
+});
+
 app.use(function (req, res, next) {
 	res.header(
 		'Access-Control-Allow-Methods',
@@ -94,20 +98,6 @@ app.get('/api/config/paypal', (req, res) => {
 	res.send(process.env.PAYPAL_CLIENT_ID);
 });
 
-if (process.env.NODE_ENV === 'production') {
- 	const __dirname = path.resolve();
- 	app.use(
- 		'/images',
- 		express.static(path.join(__dirname, 'public/img/products'))
- 	);
- 	app.use('/images', express.static(path.join(__dirname, 'public/img/users')));
- 	// set static folder
-	
- } else {
- 	app.get('/', (req, res) => {
- 		res.send('API is running....');
- 	});
- }
 
 // affect all http requests
 app.all('*', (req, res, next) => {
