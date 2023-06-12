@@ -6,9 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"start": "node server.js",
-		"start:prod": "NODE_ENV=production node backend/server.js",
-		"server": "nodemon server.js",
-		"build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+		"server": "nodemon server.js"
 	},
 	"author": "",
 	"license": "ISC",
