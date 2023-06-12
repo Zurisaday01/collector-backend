@@ -27,13 +27,7 @@ connectDB();
 const app = express();
 
 // Implement CORS
-app.use(
-	cors({
-		origin: 'http://localhost:3000',
-		optionsSuccessStatus: 200,
-		credentials: true,
-	})
-);
+app.use(cors());
 
 app.get('/', (req, res) => {
 	res.send('API is running....');
