@@ -27,7 +27,11 @@ connectDB();
 const app = express();
 
 // Implement CORS
-app.use(cors());
+app.use(cors({
+	origin: 'https://collector-backend.onrender.com/',
+	optionsSuccessStatus: 200,
+	credentials: true,
+}));
 
 app.get('/', (req, res) => {
 	res.send('API is running....');
