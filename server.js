@@ -56,11 +56,8 @@ app.use(function (req, res, next) {
 
 // Function to serve all static files
 // inside public directory.
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-app.use('/images', express.static(path.join(__dirname, 'public/img/products')));
-app.use('/images', express.static(path.join(__dirname, 'public/img/users')));
+app.use('/images', express.static('./public/img/products'));
+app.use('/images', express.static('./public/img/users'));
 
 if (process.env.NODE_ENV === 'development') {
 	app.use(morgan('dev'));
