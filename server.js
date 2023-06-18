@@ -27,11 +27,12 @@ connectDB();
 const app = express();
 
 // Implement CORS
-app.use(cors({
-	origin: true,
-	credentials: true,
-}));
-
+app.use(
+	cors({
+		origin: true,
+		credentials: true,
+	})
+);
 
 app.get('/', (req, res) => {
 	res.send('API is running....');
@@ -42,7 +43,7 @@ app.use(function (req, res, next) {
 		'Access-Control-Allow-Methods',
 		'GET,PUT,POST,DELETE,UPDATE,OPTIONS'
 	);
-	res.header("Access-Control-Allow-Origin", "*");
+	res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
 	res.header('Content-Type', 'application/json;charset=UTF-8');
 	res.header('Access-Control-Allow-Credentials', true);
 	res.header(
@@ -94,7 +95,6 @@ app.use('/api/orders', orderRoutes);
 app.get('/api/config/paypal', (req, res) => {
 	res.send(process.env.PAYPAL_CLIENT_ID);
 });
-
 
 // affect all http requests
 app.all('*', (req, res, next) => {
