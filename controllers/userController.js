@@ -22,7 +22,7 @@ const upload = multer({
 
 export const uploadUserPhoto = upload.single('photo');
 
-export const resizeUserPhoto = (req, file, next) => {
+export const resizeUserPhoto = catchAsync(async (req, file, next) => {
 	if (!req.file) return next();
 
 	req.file.filename = `user-${req.user.id}-${Date.now()}.jpeg`;
@@ -34,7 +34,7 @@ export const resizeUserPhoto = (req, file, next) => {
 		.toFile(`backend/public/img/users/${req.file.filename}`);
 
 	next();
-};
+});
 
 const filterObj = (obj, ...allowedFields) => {
 	const newObj = {};
